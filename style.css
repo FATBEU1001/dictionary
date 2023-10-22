@@ -1,0 +1,231 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #f3ede2;
+    font-family: "Poppins", sans-serif;
+    --primary-color: #8d8b82;
+    --secondary-color: #d5d0c5;
+}
+input,
+button,
+textarea {
+    font-family: inherit;
+}
+ul {
+    list-style: none;
+}
+.header {
+    background-color: var(--secondary-color);
+    padding: 5px 0;
+    color: var(--primary-color);
+    font-weight: 300;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin: 0 auto;
+}
+.header .open-modal-btn {
+    cursor: pointer;
+}
+.dictionary .container {
+    display: flex;
+    gap: 50px;
+    width: 95%;
+    margin: 0 auto;
+}
+.dictionary h1 {
+    color: var(--primary-color);
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+.dictionary .left {
+    width: 60%;
+}
+.dictionary .boxInput textarea {
+    width: 100%;
+    padding: 20px;
+    border: none;
+    border: 1px solid var(--secondary-color);
+    background-color: transparent;
+    border-radius: 10px;
+    outline: none;
+    font-size: 16px;
+}
+.dictionary .boxInput textarea::placeholder {
+    color: var(--primary-color);
+}
+.dictionary .boxInput button {
+    background-color: transparent;
+    border: 1px solid var(--secondary-color);
+    background-color: #eee7db;
+    display: inline-block;
+    color: var(--primary-color);
+    padding: 10px 40px;
+    border-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.dictionary .right {
+    width: 40%;
+}
+.dictionary #paragraph {
+    font-size: 17px;
+    line-height: 30px;
+    border: 1px solid var(--secondary-color);
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+}
+.dictionary #paragraph span:hover {
+    background-color: yellow;
+}
+.dictionary .result {
+    position: sticky;
+    top: 0;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--secondary-color);
+}
+.dictionary .result .word {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.dictionary .result .word .details p {
+    font-weight: 600;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+.dictionary .result .word .details i {
+    margin-left: 20px;
+}
+.dictionary .result .word i {
+    cursor: pointer;
+    font-size: 18px;
+}
+.dictionary .result .word .save {
+    margin-top: 5px;
+}
+.dictionary .result .mean {
+    background-color: #e7e0d4;
+    font-weight: 500;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.dictionary .result .content li {
+    border-top: 1px solid rgba(0, 0, 0, 0.128);
+    padding-top: 20px;
+    margin-top: 20px;
+}
+.dictionary .result .content li div {
+    border-left: 3px solid var(--secondary-color);
+    padding-left: 10px;
+    font-weight: 300;
+    font-size: 14px;
+}
+.dictionary .result .content li div p {
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+}
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+.modal .modal-inner {
+    width: 450px;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    margin: 10px auto;
+    transform: scale(0.5);
+    transition: 0.5s;
+}
+.modal.active .modal-inner {
+    transform: scale(1);
+}
+.modal .modal-header {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px;
+    font-size: 15px;
+}
+.modal .modal-header i {
+    cursor: pointer;
+}
+.modal .modal-body {
+    padding: 15px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.modal .modal-body::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+.modal .modal-body::-webkit-scrollbar-track {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+}
+
+/* Handle */
+.modal .modal-body::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+}
+.modal .modal-body ul li {
+    font-size: 13px;
+    border-bottom: 1px solid #e6e6e6;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.modal .modal-body ul li span:first-child {
+    font-weight: 500;
+}
+.modal .modal-body ul li span:nth-child(2) {
+    color: #999;
+    font-weight: 300;
+}
+.modal .modal-footer {
+    padding: 15px;
+    text-align: right;
+}
+
+.modal .modal-footer button {
+    outline: none;
+    border: none;
+    padding: 5px 15px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+}
